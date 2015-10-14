@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\XMLWriter.cs">
+    <Files>
+      <File FileName="Assets\_XMLWriterExample.cs" Line="166" Column="24" />
+      <File FileName="Assets\XMLWriter.cs" Line="15" Column="22" />
+      <File FileName="Assets\OctetExporter.cs" Line="52" Column="61" />
+      <File FileName="Assets\Exportable.cs" Line="8" Column="46" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
