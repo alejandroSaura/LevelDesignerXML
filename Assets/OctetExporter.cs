@@ -8,8 +8,21 @@ using System.Text;
 public class OctetExporter : MonoBehaviour {
 
 	XMLWriter writer;
+	MemoryStream memoryStream; 
 
-	public List<ExportableData> objects = new List<ExportableData>();
+	XmlSerializer xmlGeometrySerializer; 
+	XmlSerializer xmlLightSerializer;
+	XmlSerializer xmlRigidBodySerializer;
+	XmlSerializer xmlCameraSerializer;
+
+	XmlTextWriter xmlTextWriter;
+	
+	public List<Geometry> geometry = new List<Geometry>();
+	public List<OctetLight> lights = new List<OctetLight>();
+	public List<OctetRigidBody> rigidBodies = new List<OctetRigidBody>();
+	public List<OctetCamera> cameras = new List<OctetCamera>();
+
+
 	string result;
 
 	Rect _Save, _SaveMSG;
@@ -21,6 +34,15 @@ public class OctetExporter : MonoBehaviour {
 		_SaveMSG=new Rect(10,120,400,40);
 
 		writer = gameObject.GetComponent<XMLWriter>();
+
+		memoryStream = new MemoryStream(); 
+
+		xmlGeometrySerializer = new XmlSerializer(typeof(List<Geometry>)); 
+		xmlLightSerializer = new XmlSerializer(typeof(List<OctetLight>)); 
+		xmlRigidBodySerializer = new XmlSerializer(typeof(List<OctetRigidBody>));
+		xmlCameraSerializer = new XmlSerializer(typeof(List<OctetCamera>));
+
+		xmlTextWriter = new XmlTextWriter(memoryStream, Encoding.UTF8);
 
 	}
 
@@ -34,10 +56,25 @@ public class OctetExporter : MonoBehaviour {
 		if (GUI.Button(_Save,"Export")) { 
 			
 			GUI.Label(_SaveMSG,"Export"); 
+
+			Debug.Log(geometry[1]);
 			 
 			
 			// Time to creat our XML! 
-			result = SerializeObject(objects[0]._data);
+//			foreach (ExportableData obj in objects) {
+//				result += SerializeObject(obj._data);
+//			}
+			result = "";
+
+			if(geometry.Count > 0)
+				result = SerializeObject(geometry);
+			if(lights.Count > 0)
+				result = SerializeObject(lights);
+			if(rigidBodies.Count > 0)
+				result = SerializeObject(rigidBodies);
+			if(cameras.Count > 0)
+				result = SerializeObject(cameras);
+
 			writer.CreateXML(result);
 			Debug.Log(result);
 		} 
@@ -48,10 +85,25 @@ public class OctetExporter : MonoBehaviour {
 	string SerializeObject(object pObject) 
 	{ 
 		string XmlizedString = null; 
-		MemoryStream memoryStream = new MemoryStream(); 
-		XmlSerializer xs = new XmlSerializer(typeof(ExportableData.Geometry)); 
-		XmlTextWriter xmlTextWriter = new XmlTextWriter(memoryStream, Encoding.UTF8); 
-		xs.Serialize(xmlTextWriter, pObject); 
+		 
+		if(pObject == geometry)
+		{
+			xmlGeometrySerializer.Serialize(xmlTextWriter, geometry);
+		}
+		if(pObject == lights)
+		{
+			xmlLightSerializer.Serialize(xmlTextWriter, lights);
+		}
+		if(pObject == rigidBodies)
+		{
+			xmlRigidBodySerializer.Serialize(xmlTextWriter, rigidBodies);
+		}
+		if(pObject == cameras)
+		{
+			xmlCameraSerializer.Serialize(xmlTextWriter, cameras);
+		}
+		//xmlGeometrySerializer.Serialize(xmlTextWriter, pObject); 
+
 		memoryStream = (MemoryStream)xmlTextWriter.BaseStream; 
 		XmlizedString = UTF8ByteArrayToString(memoryStream.ToArray()); 
 		return XmlizedString; 
