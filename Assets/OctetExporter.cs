@@ -57,7 +57,7 @@ public class OctetExporter : MonoBehaviour {
 			
 			GUI.Label(_SaveMSG,"Export"); 
 
-			Debug.Log(geometry[1]);
+			//Debug.Log(geometry[1]);
 			 
 			
 			// Time to creat our XML! 

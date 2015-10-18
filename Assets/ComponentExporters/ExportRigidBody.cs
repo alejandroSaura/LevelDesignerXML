@@ -22,6 +22,7 @@ public class ExportRigidBody : MonoBehaviour {
 		data.mass = rb.mass;
 		data.drag = rb.drag;
 		data.useGravity = rb.useGravity;
+		data.Kinematic = rb.isKinematic;
 
 		
 		exporter.rigidBodies.Add(data);
@@ -37,4 +38,5 @@ public class OctetRigidBody
 	public float mass;
 	public float drag;
 	public bool useGravity;
+	public bool Kinematic;
 } 

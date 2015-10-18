@@ -53,8 +53,6 @@
      <Compile Include="Assets\ExportInfo.cs" />
      <Compile Include="Assets\OctetExporter.cs" />
      <Compile Include="Assets\XMLWriter.cs" />
-     <None Include="Assets\LevelData.xml" />
-     <None Include="Assets\SaveData.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

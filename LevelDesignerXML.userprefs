@@ -1,21 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ComponentExporters\ExportLight.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\OctetExporter.cs">
     <Files>
-      <File FileName="Assets\OctetExporter.cs" Line="94" Column="16" />
+      <File FileName="Assets\OctetExporter.cs" Line="60" Column="6" />
       <File FileName="Assets\XMLWriter.cs" Line="1" Column="1" />
-      <File FileName="Assets\ExportInfo.cs" Line="8" Column="16" />
+      <File FileName="Assets\ExportInfo.cs" Line="1" Column="1" />
       <File FileName="Assets\ComponentExporters\ExportGeometry.cs" Line="18" Column="58" />
-      <File FileName="Assets\ComponentExporters\ExportLight.cs" Line="48" Column="20" />
-      <File FileName="Assets\ComponentExporters\ExportRigidBody.cs" Line="36" Column="2" />
+      <File FileName="Assets\ComponentExporters\ExportLight.cs" Line="1" Column="1" />
+      <File FileName="Assets\ComponentExporters\ExportRigidBody.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="ComponentExporters" expanded="True">
-              <Node name="ExportLight.cs" selected="True" />
-            </Node>
+            <Node name="ComponentExporters" expanded="True" />
+            <Node name="OctetExporter.cs" selected="True" />
           </Node>
         </State>
       </Pad>
