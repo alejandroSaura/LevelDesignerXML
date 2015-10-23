@@ -1,32 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\OctetExporter.cs">
     <Files>
-      <File FileName="Assets\OctetExporter.cs" Line="60" Column="6" />
-      <File FileName="Assets\XMLWriter.cs" Line="1" Column="1" />
+      <File FileName="Assets\ComponentExporters\ExportCamera.cs" Line="18" Column="3" />
+      <File FileName="Assets\OctetExporter.cs" Line="42" Column="11" />
       <File FileName="Assets\ExportInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets\ComponentExporters\ExportGeometry.cs" Line="18" Column="58" />
-      <File FileName="Assets\ComponentExporters\ExportLight.cs" Line="1" Column="1" />
-      <File FileName="Assets\ComponentExporters\ExportRigidBody.cs" Line="1" Column="1" />
+      <File FileName="Assets\ComponentExporters\ExportGeometry.cs" Line="19" Column="3" />
+      <File FileName="Assets\ComponentExporters\ExportRigidBody.cs" Line="16" Column="72" />
+      <File FileName="Assets\ComponentExporters\ExportLight.cs" Line="18" Column="3" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="ComponentExporters" expanded="True" />
-            <Node name="OctetExporter.cs" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>result</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

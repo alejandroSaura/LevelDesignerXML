@@ -27,6 +27,62 @@ public class OctetExporter : MonoBehaviour {
 
 	Rect _Save, _SaveMSG;
 
+	GameObject[] _objects;
+
+
+	void Awake ()
+	{
+
+		_objects = GameObject.FindGameObjectsWithTag("export");
+		foreach (GameObject o in _objects)
+		{
+			//Get objects to export
+			ExportInfo info = o.AddComponent<ExportInfo>();
+			info.Init();
+
+			//Add export components as needed
+			#region
+			MeshFilter m = o.GetComponent<MeshFilter>();
+			if(m  != null)
+			{
+				ExportGeometry e = o.AddComponent<ExportGeometry>();
+				if(m.mesh.name == "Cube Instance")
+				{
+					e.geometryType = "Cube";
+				}else if(m.mesh.name == "Sphere Instance")				
+				{
+					e.geometryType = "Sphere";
+				}
+			}
+
+			Rigidbody r = o.GetComponent<Rigidbody>();
+			if(r  != null)
+			{
+				o.AddComponent<ExportRigidBody>();
+			}
+
+			Camera c = o.GetComponent<Camera>();
+			if(c  != null)
+			{
+				o.AddComponent<ExportCamera>();
+			}
+
+			Light l = o.GetComponent<Light>();
+			if(l  != null)
+			{				
+				ExportLight e = o.AddComponent<ExportLight>();
+				if (l.type == LightType.Point)
+				{
+					e.lightType = "Point";
+				}
+			}
+			#endregion
+
+		}
+	}
+
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -48,8 +104,7 @@ public class OctetExporter : MonoBehaviour {
 
 
 	void OnGUI() 
-	{    
-		
+	{   		
 		//*************************************************** 
 		// Export 
 		// **************************************************    
@@ -57,13 +112,6 @@ public class OctetExporter : MonoBehaviour {
 			
 			GUI.Label(_SaveMSG,"Export"); 
 
-			//Debug.Log(geometry[1]);
-			 
-			
-			// Time to creat our XML! 
-//			foreach (ExportableData obj in objects) {
-//				result += SerializeObject(obj._data);
-//			}
 			result = "";
 
 			if(geometry.Count > 0)
@@ -77,9 +125,7 @@ public class OctetExporter : MonoBehaviour {
 
 			writer.CreateXML(result);
 			Debug.Log(result);
-		} 
-		
-		
+		} 	
 	} 
 
 	string SerializeObject(object pObject) 
@@ -102,7 +148,6 @@ public class OctetExporter : MonoBehaviour {
 		{
 			xmlCameraSerializer.Serialize(xmlTextWriter, cameras);
 		}
-		//xmlGeometrySerializer.Serialize(xmlTextWriter, pObject); 
 
 		memoryStream = (MemoryStream)xmlTextWriter.BaseStream; 
 		XmlizedString = UTF8ByteArrayToString(memoryStream.ToArray()); 

@@ -8,7 +8,7 @@ public class ExportInfo : MonoBehaviour {
 	public int id;
 
 	// Use this for initialization
-	void Awake () {
+	public void Init () {
 		id = idGenerator++;
 	}
 }

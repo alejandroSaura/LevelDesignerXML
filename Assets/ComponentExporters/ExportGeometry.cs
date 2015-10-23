@@ -5,6 +5,8 @@ public class ExportGeometry : MonoBehaviour {
 
 	OctetExporter exporter;
 
+
+
 	Geometry data = new Geometry();
 
 	public string geometryType; //set this one manually
@@ -13,7 +15,8 @@ public class ExportGeometry : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		exporter = Camera.main.gameObject.GetComponent<OctetExporter>();
+		exporter = GameObject.Find ("Manager").GetComponent<OctetExporter>();
+
 
 		data.nodeId = gameObject.GetComponent<ExportInfo>().id;
 
@@ -23,10 +26,15 @@ public class ExportGeometry : MonoBehaviour {
 		data.posY = transform.position.y;
 		data.posZ = transform.position.z;
 
-		Vector3 rot = transform.rotation.eulerAngles;
+		Quaternion rot1 = Quaternion.FromToRotation(Vector3.up, transform.up);
+		Quaternion rot2 = Quaternion.FromToRotation(Vector3.forward, transform.forward);
+		Quaternion rotTot = rot1 * rot2;
+
+		Vector3 rot = rotTot.eulerAngles;
 		data.rotX = rot.x;
 		data.rotY = rot.y;
 		data.rotZ = rot.z;
+
 
 		data.scaleX = transform.localScale.x;
 		data.scaleY = transform.localScale.y;

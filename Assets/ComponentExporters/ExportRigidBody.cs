@@ -13,7 +13,7 @@ public class ExportRigidBody : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		exporter = Camera.main.gameObject.GetComponent<OctetExporter>();
+		exporter = GameObject.Find ("Manager").GetComponent<OctetExporter>();
 
 		data.nodeId = gameObject.GetComponent<ExportInfo>().id;
 		
