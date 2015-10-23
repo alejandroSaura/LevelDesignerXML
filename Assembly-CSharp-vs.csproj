@@ -48,12 +48,12 @@
   <ItemGroup>
      <Compile Include="Assets\ComponentExporters\ExportCamera.cs" />
      <Compile Include="Assets\ComponentExporters\ExportGeometry.cs" />
+     <Compile Include="Assets\ComponentExporters\ExportHingeJoint.cs" />
      <Compile Include="Assets\ComponentExporters\ExportLight.cs" />
      <Compile Include="Assets\ComponentExporters\ExportRigidBody.cs" />
      <Compile Include="Assets\ExportInfo.cs" />
      <Compile Include="Assets\OctetExporter.cs" />
      <Compile Include="Assets\XMLWriter.cs" />
-     <None Include="Assets\LevelData.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

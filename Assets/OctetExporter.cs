@@ -14,6 +14,7 @@ public class OctetExporter : MonoBehaviour {
 	XmlSerializer xmlLightSerializer;
 	XmlSerializer xmlRigidBodySerializer;
 	XmlSerializer xmlCameraSerializer;
+	XmlSerializer xmlHingeJointSerializer;
 
 	XmlTextWriter xmlTextWriter;
 	
@@ -21,6 +22,7 @@ public class OctetExporter : MonoBehaviour {
 	public List<OctetLight> lights = new List<OctetLight>();
 	public List<OctetRigidBody> rigidBodies = new List<OctetRigidBody>();
 	public List<OctetCamera> cameras = new List<OctetCamera>();
+	public List<OctetHingeJoint> hingeJoints = new List<OctetHingeJoint>();
 
 
 	string result;
@@ -76,6 +78,13 @@ public class OctetExporter : MonoBehaviour {
 					e.lightType = "Point";
 				}
 			}
+
+			HingeJoint h = o.GetComponent<HingeJoint>();
+			if(h  != null)
+			{
+				o.AddComponent<ExportHingeJoint>();
+			}
+
 			#endregion
 
 		}
@@ -97,6 +106,7 @@ public class OctetExporter : MonoBehaviour {
 		xmlLightSerializer = new XmlSerializer(typeof(List<OctetLight>)); 
 		xmlRigidBodySerializer = new XmlSerializer(typeof(List<OctetRigidBody>));
 		xmlCameraSerializer = new XmlSerializer(typeof(List<OctetCamera>));
+		xmlHingeJointSerializer = new XmlSerializer(typeof(List<OctetHingeJoint>));
 
 		xmlTextWriter = new XmlTextWriter(memoryStream, Encoding.UTF8);
 
@@ -122,6 +132,8 @@ public class OctetExporter : MonoBehaviour {
 				result = SerializeObject(rigidBodies);
 			if(cameras.Count > 0)
 				result = SerializeObject(cameras);
+			if(hingeJoints.Count >0)
+				result = SerializeObject(hingeJoints);
 
 			writer.CreateXML(result);
 			Debug.Log(result);
@@ -147,6 +159,10 @@ public class OctetExporter : MonoBehaviour {
 		if(pObject == cameras)
 		{
 			xmlCameraSerializer.Serialize(xmlTextWriter, cameras);
+		}
+		if(pObject == hingeJoints)
+		{
+			xmlHingeJointSerializer.Serialize(xmlTextWriter, hingeJoints);
 		}
 
 		memoryStream = (MemoryStream)xmlTextWriter.BaseStream; 

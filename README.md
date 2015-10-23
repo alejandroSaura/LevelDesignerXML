@@ -3,7 +3,15 @@
 This small project aims to describe Unity scenes geometry, light and physics in a XML format.
 It is designed to hook with a custom importer for octet [https://github.com/andy-thomason/octet], a C++ game framework.
 
-Each gameObject being described must have the ExportInfo component, and then the corresponding scripts associated to the component to describe.
-The main camera holds a main exporter script, which grabs all these descriptions and writes tehm on a XML file.
+It currently supports cube and sphere meshes, lights, cameras, rigidbodies and hinge joints.
 
-Once the setup is complete, run the scene and press the export button. A new XML file will be created on the assets folder.
+In the example scenes you will find the basics: 
+
+1 - Tag all objects that you want to export with the tag "export". A manager game object will consider all objects with that tag, and assign them 
+special components.
+
+2 - Run the scene and press the export button on the game window. A new XML file will be created on the assets folder.
+
+3 - Use the XML as input for your Octet importer (You can find mine here: https://github.com/alejandroSaura/octet/tree/UnityXMLimporter).
+
+4 - Have fun using Octet!
